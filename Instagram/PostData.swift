@@ -15,6 +15,7 @@ class PostData: NSObject {
     var imageString: String?
     var name: String?
     var caption: String?
+    var comments: [String] = []
     var date: Date?
     var likes: [String] = []
     var isLiked: Bool = false
@@ -30,6 +31,10 @@ class PostData: NSObject {
         self.name = valueDictionary["name"] as? String
         
         self.caption = valueDictionary["caption"] as? String
+        
+        if let comments = valueDictionary["comments"] as? [String]{
+            self.comments = comments
+        }
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
